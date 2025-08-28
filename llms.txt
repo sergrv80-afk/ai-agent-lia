@@ -1,0 +1,22 @@
+/
+/benefits
+/cases
+/contact
+/faq
+
+# Основные разделы AI-ассистента
+#hero
+#benefits
+#cases
+#contact
+#faq
+
+# Ключевые страницы для AI-понимания
+/features
+/integrations
+/pricing
+/demo
+
+# Статьи для AI-понимания
+/ispolzovanie-gpt-dl-biznesa.html
+/chat-bot-dl-biznesa.html

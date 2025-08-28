@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>AI‑Ассистент — закрывает заявки за 3 сек • Умный продавец 24/7</title>
+  <meta name="description" content="AI‑ассистент, который не упускает ни одной заявки. Отвечает за 3 секунды, ведёт диалог вместо менеджера и превращает трафик в заявки — даже ночью." />
+  <meta name="keywords" content="AI ассистент, чат-бот, автоматические продажи, лидогенерация, WhatsApp, Telegram, Instagram, CRM, Bitrix24, интеграции" />
+  <meta name="author" content="AI‑Ассистент" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://ai-agent-lia.ru/" />
+
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:title" content="AI‑Ассистент — закрывает заявки за 3 сек • Умный продавец 24/7" />
+  <meta property="og:description" content="AI‑ассистент, который не упускает ни одной заявки. Отвечает за 3 секунды, ведёт диалог вместо менеджера и превращает трафик в заявки — даже ночью." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ai-agent-lia.ru/" />
+  <meta property="og:image" content="https://ai-agent-lia.ru/assets/icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="AI‑Ассистент - Умный продавец 24/7" />
+  <meta property="og:site_name" content="AI‑Ассистент" />
+  <meta property="og:locale" content="ru_RU" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ai_assistant" />
+  <meta name="twitter:creator" content="@ai_assistant" />
+  <meta name="twitter:title" content="AI‑Ассистент — закрывает заявки за 3 сек • Умный продавец 24/7" />
+  <meta name="twitter:description" content="AI‑ассистент, который не упускает ни одной заявки. Отвечает за 3 секунды, ведёт диалог вместо менеджера и превращает трафик в заявки — даже ночью." />
+  <meta name="twitter:image" content="https://ai-agent-lia.ru/assets/icon-512.png" />
+  <meta name="twitter:image:alt" content="AI‑Ассистент - Умный продавец 24/7" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neutral: {
+              950: '#0a0a0a',
+              900: '#171717',
+              800: '#262626',
+              400: '#a3a3a3',
+              300: '#d4d4d4',
+              100: '#f5f5f5'
+            },
+            indigo: {
+              500: '#6366f1',
+              400: '#818cf8'
+            },
+            fuchsia: {
+              500: '#a855f7',
+              400: '#c084fc'
+            },
+            rose: {
+              500: '#f43f5e',
+              400: '#fb7185'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root{--g1:#6366f1;--g2:#a855f7;--g3:#f43f5e;--g4:#22d3ee}
+    @keyframes floatSlow{0%{transform:translate3d(0,0,0)}50%{transform:translate3d(12px,-14px,0)}100%{transform:translate3d(0,0,0)}}
+    @keyframes aurora{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @keyframes shine{0%{transform:translateX(-150%) skewX(-20deg)}100%{transform:translateX(250%) skewX(-20deg)}}
+    @keyframes pulseSoft{0%,100%{opacity:.6;filter:blur(28px)}50%{opacity:.9;filter:blur(34px)}}
+    /* Orbs */
+    .orb{position:absolute;pointer-events:none;border-radius:9999px;filter:blur(30px);opacity:.6;mix-blend:screen;animation:floatSlow 12s ease-in-out infinite}
+    .orb--indigo{width:360px;height:360px;background:radial-gradient(closest-side, rgba(99,102,241,.55), rgba(99,102,241,0))}
+    .orb--fuchsia{width:280px;height:280px;background:radial-gradient(closest-side, rgba(168,85,247,.55), rgba(168,85,247,0));animation-duration:14s}
+    .orb--rose{width:320px;height:320px;background:radial-gradient(closest-side, rgba(244,63,94,.5), rgba(244,63,94,0));animation-duration:16s}
+    /* Gradient outline pills */
+    .pill{background:linear-gradient(#0a0a0a,#0a0a0a) padding-box, linear-gradient(135deg,var(--g1),var(--g2),var(--g3)) border-box;border:1px solid transparent;color:#e5e7eb;transition:all .25s ease}
+    .pill:hover{box-shadow:0 0 0 6px rgba(99,102,241,.08);transform:translateY(-1px)}
+    /* Turn existing chips into gradient pills */
+    .rounded-full.bg-white\/10{background:linear-gradient(#0a0a0a,#0a0a0a) padding-box, linear-gradient(135deg,var(--g1),var(--g2),var(--g3)) border-box;border:1px solid transparent}
+    #contact span.rounded-full{background:linear-gradient(#0a0a0a,#0a0a0a) padding-box, linear-gradient(135deg,var(--g1),var(--g2),var(--g3)) border-box;border:1px solid transparent}
+    /* Glowing gradient border on cards */
+    .rounded-2xl.bg-white\/5.ring-1{position:relative;overflow:hidden}
+    .rounded-2xl.bg-white\/5.ring-1::before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from 180deg at 50% 50%, rgba(99,102,241,.35), rgba(168,85,247,.35), rgba(244,63,94,.25), rgba(99,102,241,.35));filter:blur(18px);opacity:0;transition:opacity .35s ease}
+    .rounded-2xl.bg-white\/5.ring-1:hover::before{opacity:.9}
+    /* Buttons: glow + shine */
+    a[href="#trial"], a[href="#audit"], .fixed.bottom-5.right-5{position:relative;overflow:hidden}
+    a[href="#trial"].glow, .fixed.bottom-5.right-5{box-shadow:0 0 0 2px rgba(255,255,255,.08), 0 10px 30px rgba(99,102,241,.25), 0 0 80px rgba(168,85,247,.15)}
+    a[href="#trial"]::before, a[href="#audit"]::before, .fixed.bottom-5.right-5::before{content:"";position:absolute;inset:-20%;background:linear-gradient(115deg, rgba(255,255,255,.0) 40%, rgba(255,255,255,.25) 50%, rgba(255,255,255,.0) 60%);transform:translateX(-150%) skewX(-20deg);filter:blur(2px);animation:shine 2.8s ease-in-out infinite}
+    /* Headings underline shimmer */
+    section h2{position:relative;display:inline-block}
+    section h2::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:2px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));background-size:200% 100%;animation:aurora 6s ease infinite}
+    /* Hero gradient aura */
+    #home>.mx-auto{position:relative}
+    #home .aurora-ring{position:absolute;inset:-2px;border-radius:28px;background:radial-gradient(circle at 20% 10%, rgba(99,102,241,.15), transparent 40%), radial-gradient(circle at 80% 30%, rgba(168,85,247,.12), transparent 45%), radial-gradient(circle at 50% 80%, rgba(244,63,94,.12), transparent 50%);filter:blur(20px);pointer-events:none}
+    /* Scroll reveal */
+    .ros{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .ros--in{opacity:1;transform:none}
+    /* Inputs focus neon */
+    input, textarea{transition:box-shadow .25s ease, border-color .25s ease}
+    input:focus, textarea:focus{box-shadow:0 0 0 3px rgba(99,102,241,.35), 0 0 0 6px rgba(168,85,247,.18);border-color:rgba(255,255,255,.25)}
+  </style>
+  <!-- JSON-LD Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AI‑Ассистент",
+    "url": "https://ai-agent-lia.ru",
+    "logo": "https://ai-agent-lia.ru/assets/icon-512.png",
+    "description": "AI‑ассистент, который не упускает ни одной заявки. Отвечает за 3 секунды, ведёт диалог вместо менеджера и превращает трафик в заявки — даже ночью.",
+    "foundingDate": "2025",
+    "sameAs": [
+      "https://t.me/ai_assistant",
+      "https://vk.com/ai_assistant",
+      "https://x.com/ai_assistant"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AI‑Ассистент",
+    "description": "Умный продавец, который закрывает заявки за 3 секунды и работает 24/7",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI‑Ассистент"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB",
+      "availability": "https://schema.org/InStock"
+    },
+    "category": "AI Software"
+  }
+  </script>
+
+  <!-- JSON-LD Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI‑Ассистент для бизнеса",
+    "description": "Автоматические продажи, лидогенерация, поддержка клиентов через WhatsApp, Telegram, Instagram, ВКонтакте, сайт, Avito",
+    "provider": {
+      "@type": "Organization",
+      "name": "AI‑Ассистент"
+    },
+    "areaServed": "RU",
+    "serviceType": "AI-powered CRM"
+  }
+  </script>
+</head>
+<body>
+  <div class="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-indigo-500/30 selection:text-white">
+    <!-- ===== Top Bar ===== -->
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/70 bg-neutral-950/90 border-b border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#home" class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500 shadow-lg shadow-indigo-500/20">🤖</span>
+            <div class="text-left leading-tight">
+              <p class="font-semibold text-lg">AI‑АССИСТЕНТ</p>
+              <p class="text-xs text-neutral-400">закрывает заявки за 3 сек</p>
+            </div>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm text-neutral-300">
+            <a href="#benefits" class="hover:text-white">Преимущества</a>
+            <a href="#how" class="hover:text-white">Как это работает</a>
+            <a href="#cases" class="hover:text-white">Примеры</a>
+            <a href="#pricing" class="hover:text-white">Тарифы</a>
+            <a href="#faq" class="hover:text-white">FAQ</a>
+            <a href="#contact" class="hover:text-white">Контакты</a>
+          </nav>
+          <div class="hidden md:flex items-center gap-3">
+            <a href="https://ai.call-intellect.ru" target="_blank" class="glow px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold shadow hover:opacity-90 transition">Протестировать бота</a>
+            <a href="#audit" class="px-4 py-2 rounded-xl ring-1 ring-white/20 text-white hover:bg-white/10 transition">Бесплатный аудит</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section id="home" class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60rem_40rem_at_50%_-10%,rgba(99,102,241,0.25),transparent)]"></div>
+      <div class="orb orb--indigo" style="top:-40px;left:-60px"></div>
+      <div class="orb orb--fuchsia" style="bottom:-60px;left:20%"></div>
+      <div class="orb orb--rose" style="top:20%;right:-80px"></div>
+      <div class="aurora-ring"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-24">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+              <span class="block">AI‑ассистент,</span>
+              <span class="block mt-2 bg-gradient-to-br from-indigo-400 via-fuchsia-400 to-rose-400 bg-clip-text text-transparent">который не упускает ни одной заявки</span>
+            </h1>
+            <p class="mt-6 text-lg text-neutral-300 max-w-xl">Вы теряете до 98% клиентов с сайта из‑за задержек с ответом. Наш AI‑продавец реагирует за 3 секунды, ведёт диалог вместо менеджера и превращает трафик в заявки — даже ночью.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a href="#trial" class="glow inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-neutral-900 font-semibold shadow-lg hover:opacity-90 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Протестировать бота
+              </a>
+              <a href="#audit" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl ring-1 ring-white/20 hover:bg-white/10 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 4.5v9L12 21 3 16.5v-9L12 3zm0 2.18L5 8v8l7 3.18L19 16V8l-7-2.82z"/></svg>
+                Бесплатный аудит маркетинга
+              </a>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-4 max-w-md text-center text-sm">
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <p class="text-2xl font-extrabold">-37%</p>
+                <p class="text-neutral-400">CPL</p>
+              </div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <p class="text-2xl font-extrabold">ROI 300%</p>
+                <p class="text-neutral-400">по кейсам</p>
+              </div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <p class="text-2xl font-extrabold">45+</p>
+                <p class="text-neutral-400">внедрений</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-neutral-800 to-neutral-900 ring-1 ring-white/10 p-2">
+              <div class="relative h-full w-full rounded-2xl bg-neutral-950 overflow-hidden">
+                <div class="absolute inset-0 opacity-40 bg-[radial-gradient(50%_50%_at_30%_20%,rgba(236,72,153,0.4),transparent_60%)]"></div>
+                <div class="absolute inset-x-0 top-0 p-4 flex items-center gap-2 border-b border-white/10">
+                  <span class="h-3 w-3 rounded-full bg-red-500"></span>
+                  <span class="h-3 w-3 rounded-full bg-yellow-500"></span>
+                  <span class="h-3 w-3 rounded-full bg-green-500"></span>
+                  <p class="ml-2 text-xs text-neutral-400">Диалог с посетителем сайта</p>
+                </div>
+                <div class="p-4 space-y-3 text-sm">
+                  <div class="flex">
+                    <div class="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-white/5 ring-1 ring-white/10">
+                      <p class="text-[11px] uppercase tracking-wide text-neutral-400">Клиент</p>
+                      <p class="mt-1 leading-relaxed">Здравствуйте! Нужна консультация по подключению.</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-end">
+                    <div class="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-indigo-600/30 ring-1 ring-indigo-400/30">
+                      <p class="text-[11px] uppercase tracking-wide text-neutral-400">AI‑продавец</p>
+                      <p class="mt-1 leading-relaxed">Отвечаю за 3 секунды ⚡️ Расскажите, чем вы занимаетесь и какие задачи нужно закрыть?</p>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-white/5 ring-1 ring-white/10">
+                      <p class="text-[11px] uppercase tracking-wide text-neutral-400">Клиент</p>
+                      <p class="mt-1 leading-relaxed">B2B, интеграция с Bitrix24 и телефонией.</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-end">
+                    <div class="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-white/5 ring-1 ring-white/10">
+                      <p class="text-[11px] uppercase tracking-wide text-neutral-400">AI‑продавец</p>
+                      <p class="mt-1 leading-relaxed">Супер! Сразу всё подключим: Bitrix24, WhatsApp/Telegram, телефон. Предложить слоты на демо?</p>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-white/5 ring-1 ring-white/10">
+                      <p class="text-[11px] uppercase tracking-wide text-neutral-400">Клиент</p>
+                      <p class="mt-1 leading-relaxed">Да, сегодня после 16:00.</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-end">
+                    <div class="max-w-[85%] rounded-2xl px-4 py-3 text-sm bg-indigo-600/30 ring-1 ring-indigo-400/30">
+                      <p class="text-[11px] uppercase tracking-wide text-neutral-400">AI‑продавец</p>
+                      <p class="mt-1 leading-relaxed">Бронь на 16:30. Пришлю ссылку и чек‑лист подготовки. До встречи!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -bottom-6 -right-6 hidden sm:block">
+              <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 shadow-xl">
+                <p class="text-xs text-neutral-400">Интеграции</p>
+                <div class="mt-2 flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 rounded-full bg-white/10">WhatsApp</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">Telegram</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">Instagram</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">ВКонтакте</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">Сайт</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">Avito</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">Bitrix24</span>
+                  <span class="px-2 py-1 rounded-full bg-white/10">Телефония</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Benefits ===== -->
+    <section id="benefits" class="py-20 border-t border-white/10 bg-gradient-to-br from-neutral-50 to-neutral-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold text-neutral-900">Что умеет AI‑ассистент</h2>
+          <p class="mt-3 text-neutral-600">Говорит голосом вашей компании, извлекает боли и возражения, показывает, что важно клиенту, и ведёт к сделке — не просто отвечает, а продаёт.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 inline-flex items-center justify-center mb-4 text-white">⚡️</div>
+            <h3 class="font-semibold text-lg text-neutral-900">Говорит голосом бренда</h3>
+            <p class="mt-2 text-sm text-neutral-600">Без шаблонов и робо‑фраз. Настраиваем тон и стиль под ваш бренд.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 inline-flex items-center justify-center mb-4 text-white">🔍</div>
+            <h3 class="font-semibold text-lg text-neutral-900">Извлекает инсайты</h3>
+            <p class="mt-2 text-sm text-neutral-600">Собирает боли, триггеры и возражения из диалогов для рекламы и УТП.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 inline-flex items-center justify-center mb-4 text-white">🎯</div>
+            <h3 class="font-semibold text-lg text-neutral-900">Ведёт к сделке</h3>
+            <p class="mt-2 text-sm text-neutral-600">Проверенные сценарии продаж и дооценка заявки.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 inline-flex items-center justify-center mb-4 text-white">📈</div>
+            <h3 class="font-semibold text-lg text-neutral-900">Рост конверсии и чека</h3>
+            <p class="mt-2 text-sm text-neutral-600">Возвращает брошенные корзины, доводит до оплаты.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 inline-flex items-center justify-center mb-4 text-white">🌐</div>
+            <h3 class="font-semibold text-lg text-neutral-900">Работает везде</h3>
+            <p class="mt-2 text-sm text-neutral-600">WhatsApp, Telegram, Instagram, ВК, сайт, Avito. Без CRM — тоже.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 inline-flex items-center justify-center mb-4 text-white">🤖</div>
+            <h3 class="font-semibold text-lg text-neutral-900">Разгружает команду</h3>
+            <p class="mt-2 text-sm text-neutral-600">Берёт рутину на себя. Не болеет, не устаёт, не просит отпуск.</p>
+          </div>
+        </div>
+        
+        <!-- ============== CTA В СЕКЦИИ BENEFITS ============== -->
+        <div class="mt-12 text-center">
+          <div class="inline-block p-6 rounded-2xl bg-gradient-to-r from-neutral-50 to-neutral-100 border border-neutral-200 shadow-lg">
+            <h3 class="text-xl font-semibold text-neutral-900 mb-3">🚀 Готовы автоматизировать продажи?</h3>
+            <p class="text-neutral-600 mb-4">AI-ассистент начнёт работать уже завтра</p>
+            <div class="flex gap-3 justify-center flex-wrap">
+              <a href="#trial" class="px-5 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-semibold hover:shadow-lg transition-all duration-300">Начать бесплатно</a>
+              <a href="#contact" class="px-5 py-2 rounded-xl ring-1 ring-indigo-300 text-indigo-700 hover:bg-indigo-50 transition-all duration-300">Получить консультацию</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Week 1 Outcome ===== -->
+    <section class="py-20 border-t border-neutral-200 bg-gradient-to-br from-neutral-900 to-neutral-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-white">Что вы получите в первую неделю</h2>
+            <ul class="mt-6 space-y-3 text-neutral-200">
+              <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white">✓</span><span>AI берёт на себя первые диалоги и отвечает за 3 секунды — даже ночью.</span></li>
+              <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white">✓</span><span>Фильтрация лидов: менеджеры получают только «тёплых».</span></li>
+              <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white">✓</span><span>Готовые интеграции: Bitrix24, телефония, мессенджеры, сайт.</span></li>
+            </ul>
+            
+            <!-- ============== HOW-TO ИНСТРУКЦИЯ ============== -->
+            <div class="mt-8 p-6 rounded-2xl bg-white/10 ring-1 ring-white/20">
+              <h3 class="text-xl font-semibold text-white mb-4">🚀 Пошаговая инструкция внедрения</h3>
+              <ol class="space-y-3 text-neutral-200 text-sm">
+                <li class="flex gap-3">
+                  <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white text-xs font-bold">1</span>
+                  <span><strong>Анализ бизнес-процессов:</strong> Изучаем ваши текущие процессы продаж и поддержки</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white text-xs font-bold">2</span>
+                  <span><strong>Настройка сценариев:</strong> Создаём персонализированные диалоги под ваш бизнес</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white text-xs font-bold">3</span>
+                  <span><strong>Интеграция с CRM:</strong> Подключаем к вашим системам и мессенджерам</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white text-xs font-bold">4</span>
+                  <span><strong>Тестирование:</strong> Проверяем работу на реальных клиентах</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white text-xs font-bold">5</span>
+                  <span><strong>Запуск:</strong> AI-ассистент начинает работать 24/7</span>
+                </li>
+              </ol>
+            </div>
+                      <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#contact" class="px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">Свяжитесь с нами</a>
+            <a href="#cases" class="px-5 py-3 rounded-xl ring-1 ring-white/20 text-white hover:bg-white/10 transition-all duration-300">Посмотреть примеры</a>
+          </div>
+          
+          <!-- ============== ДОПОЛНИТЕЛЬНЫЙ CTA ============== -->
+          <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-indigo-500/20 to-fuchsia-500/20 ring-1 ring-white/20 text-center">
+            <p class="text-sm text-neutral-200 mb-3">🎯 <strong>Ограниченное предложение:</strong> Первые 10 клиентов получают скидку 30%</p>
+            <a href="#trial" class="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white text-sm font-semibold hover:shadow-lg transition-all duration-300">Получить скидку</a>
+          </div>
+          </div>
+          <div class="rounded-3xl bg-white/10 ring-1 ring-white/20 p-6 backdrop-blur-sm">
+            <div class="aspect-video rounded-2xl bg-gradient-to-br from-neutral-800 to-neutral-900 grid place-items-center ring-1 ring-white/10">
+              <div class="text-center">
+                <button class="mx-auto mb-4 h-16 w-16 grid place-items-center rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <p class="text-sm text-neutral-300">Нажмите Play, чтобы увидеть AI‑ассистента в работе</p>
+              </div>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-4 text-center text-sm">
+              <div class="rounded-xl bg-white/10 p-4 ring-1 ring-white/20 text-white">-37% CPL</div>
+              <div class="rounded-xl bg-white/10 p-4 ring-1 ring-white/20 text-white">ROI 300%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== B2B / CRM block ===== -->
+    <section class="py-20 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-gradient-to-br from-indigo-600/20 via-fuchsia-600/20 to-rose-600/20 ring-1 ring-white/15 p-8">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-2xl font-bold">Для B2B: подключение AI внутри вашей CRM</h3>
+              <ul class="mt-4 space-y-2 text-neutral-300 text-sm">
+                <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Интеграция с Bitrix24 «под ключ»</span></li>
+                <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Подключение AI‑логики прямо в CRM</span></li>
+                <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Связка с телефонией</span></li>
+                <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Обучение команды работе с ассистентом</span></li>
+              </ul>
+              <div class="mt-6 flex gap-3">
+                <a href="#contact" class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold">Хочу также</a>
+                <a href="#audit" class="px-5 py-3 rounded-xl ring-1 ring-white/20 hover:bg-white/10">Бесплатный аудит</a>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">WhatsApp</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">Telegram</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">Instagram</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">ВКонтакте</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">Avito</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">Bitrix24</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">Телефония</div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">Сайт</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Why Us ===== -->
+    <section class="py-20 border-t border-neutral-200 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold text-neutral-900">Почему выбирают нас</h2>
+          <p class="mt-3 text-neutral-700">Результат с первого дня. Не шаблон — точное решение под ваш бизнес. Настоящий AI, который влияет на выручку и разгружает команду.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-200">
+            <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 inline-flex items-center justify-center mb-4 text-white text-xl">⚡</div>
+            <p class="text-sm text-neutral-600">Скорость</p>
+            <p class="mt-1 text-xl font-semibold text-neutral-900">ответ за 3 сек — 24/7</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-200">
+            <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 inline-flex items-center justify-center mb-4 text-white text-xl">🎨</div>
+            <p class="text-sm text-neutral-600">Кастомизация</p>
+            <p class="mt-1 text-xl font-semibold text-neutral-900">тон, скрипты, логика</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-200">
+            <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 inline-flex items-center justify-center mb-4 text-white text-xl">📈</div>
+            <p class="text-sm text-neutral-600">Эффект</p>
+            <p class="mt-1 text-xl font-semibold text-neutral-900">рост конверсии и чека</p>
+          </div>
+        </div>
+        
+        <!-- ============== CTA В СЕКЦИИ WHY US ============== -->
+        <div class="mt-12 text-center">
+          <div class="inline-block p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-100 border border-blue-200 shadow-lg">
+            <h3 class="text-xl font-semibold text-neutral-900 mb-3">⚡ Хотите быть первыми?</h3>
+            <p class="text-neutral-600 mb-4">Присоединяйтесь к лидерам автоматизации</p>
+            <div class="flex gap-3 justify-center flex-wrap">
+              <a href="#trial" class="px-5 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all duration-300">Стать клиентом</a>
+              <a href="#contact" class="px-5 py-2 rounded-xl ring-1 ring-blue-300 text-blue-700 hover:bg-blue-50 transition-all duration-300">Узнать больше</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Process ===== -->
+    <section id="how" class="py-20 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold">Как мы создаём вашего AI‑ассистента</h2>
+        <div class="mt-10 grid md:grid-cols-4 gap-6">
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <div class="text-4xl font-extrabold text-white/60">01</div>
+            <h3 class="mt-4 font-semibold">Вы даёте вводные</h3>
+            <p class="mt-2 text-sm text-neutral-400">Экспресс‑интервью: цели, боли, задачи (продажи, поддержка, фильтрация лидов).</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <div class="text-4xl font-extrabold text-white/60">02</div>
+            <h3 class="mt-4 font-semibold">Проектируем логику</h3>
+            <p class="mt-2 text-sm text-neutral-400">Сценарии, промпты, выявление потребностей и триггеров.</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <div class="text-4xl font-extrabold text-white/60">03</div>
+            <h3 class="mt-4 font-semibold">Интегрируем</h3>
+            <p class="mt-2 text-sm text-neutral-400">WhatsApp, Telegram, Instagram, Avito, ВК, сайт, Bitrix24, телефония.</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <div class="text-4xl font-extrabold text-white/60">04</div>
+            <h3 class="mt-4 font-semibold">Запускаем быстро</h3>
+            <p class="mt-2 text-sm text-neutral-400">Вы получаете работающий инструмент без долгих внедрений.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section id="pricing" class="py-20 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold">Стоимость AI‑ассистента</h2>
+          <p class="mt-3 text-neutral-400">Цена зависит от задач и сложности — оставьте заявку, и мы подберём оптимальное решение.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="relative rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">Сам по себе</h3>
+            <p class="mt-1 text-2xl font-extrabold">от 0₽</p>
+            <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Установка без CRM</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Работает по скриптам</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Установка и базовое обучение бота</span></li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-flex px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold">Заказать проект</a>
+            <a href="#audit" class="mt-3 ml-2 inline-flex px-4 py-2 rounded-xl ring-1 ring-white/20 hover:bg-white/10">Обсудить с AI</a>
+          </div>
+          <div class="relative rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">AI + Контроль качества</h3>
+            <p class="mt-1 text-2xl font-extrabold">от 20 000₽</p>
+            <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Анализ каждого диалога</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Реакции на возражения</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Настраивается «тон бренда»</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Ежедневное обучение</span></li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-flex px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold">Заказать проект</a>
+            <a href="#audit" class="mt-3 ml-2 inline-flex px-4 py-2 rounded-xl ring-1 ring-white/20 hover:bg-white/10">Обсудить с AI</a>
+          </div>
+          <div class="relative rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">AI + Маркетинг</h3>
+            <p class="mt-1 text-2xl font-extrabold">от 30 000₽</p>
+            <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Оптимизация сайта и воронок</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Кастомные функции</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Подстройка УТП под запросы</span></li>
+              <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/60"></span><span>Сбор инсайтов и потребностей</span></li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-flex px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold">Заказать проект</a>
+            <a href="#audit" class="mt-3 ml-2 inline-flex px-4 py-2 rounded-xl ring-1 ring-white/20 hover:bg-white/10">Обсудить с AI</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Use Cases ===== -->
+    <section id="cases" class="py-20 border-t border-neutral-200 bg-gradient-to-br from-emerald-50 to-teal-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-neutral-900">Где использовать AI‑чат‑ассистента</h2>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 inline-flex items-center justify-center mb-4 text-white">🎯</div>
+            <h3 class="font-semibold text-neutral-900">Лидогенерация</h3>
+            <p class="mt-2 text-sm text-neutral-600">Получает контакты, передаёт в CRM, запускает цепочки.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600 inline-flex items-center justify-center mb-4 text-white">💰</div>
+            <h3 class="font-semibold text-neutral-900">Продажи</h3>
+            <p class="mt-2 text-sm text-neutral-600">Консультирует, подбирает товары, оформляет заказы.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 inline-flex items-center justify-center mb-4 text-white">🛒</div>
+            <h3 class="font-semibold text-neutral-900">Восстановление корзин</h3>
+            <p class="mt-2 text-sm text-neutral-600">Напоминает о брошенных корзинах и доводит до оплаты.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 inline-flex items-center justify-center mb-4 text-white">🆘</div>
+            <h3 class="font-semibold text-neutral-900">Поддержка</h3>
+            <p class="mt-2 text-sm text-neutral-600">Отвечает на вопросы, решает частые проблемы.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 inline-flex items-center justify-center mb-4 text-white">📢</div>
+            <h3 class="font-semibold text-neutral-900">Маркетинг</h3>
+            <p class="mt-2 text-sm text-neutral-600">Рассылки об акциях, новых продуктах и скидках.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-200">
+            <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 inline-flex items-center justify-center mb-4 text-white">📅</div>
+            <h3 class="font-semibold text-neutral-900">Онлайн‑запись</h3>
+            <p class="mt-2 text-sm text-neutral-600">Принимает заявки и напоминает о встречах.</p>
+          </div>
+        </div>
+        
+        <!-- ============== CTA В СЕКЦИИ USE CASES ============== -->
+        <div class="mt-12 text-center">
+          <div class="inline-block p-6 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-100 border border-emerald-200 shadow-lg">
+            <h3 class="text-xl font-semibold text-neutral-900 mb-3">💡 Нужен AI-ассистент для вашей задачи?</h3>
+            <p class="text-neutral-600 mb-4">Мы адаптируем решение под ваши потребности</p>
+            <div class="flex gap-3 justify-center flex-wrap">
+              <a href="#contact" class="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold hover:shadow-lg transition-all duration-300">Обсудить проект</a>
+              <a href="#trial" class="px-5 py-2 rounded-xl ring-1 ring-emerald-300 text-emerald-700 hover:bg-emerald-50 transition-all duration-300">Попробовать бесплатно</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="py-20 border-t border-neutral-200 bg-gradient-to-br from-slate-50 to-gray-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-neutral-900">Ответы на вопросы</h2>
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Как быстро внедрить AI‑ассистента?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Простые сценарии запускаются за 1 день. Решения с логикой и CRM — за 3–7 дней.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Что если я не разбираюсь в AI?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Вам не нужно разбираться — мы ведём проект под ключ: от брифа до результата.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Какие платформы поддерживаются?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">WhatsApp, Telegram, Instagram, ВКонтакте, сайт, Avito. Возможны и другие по запросу.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Можно ли менять сценарии после запуска?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Да. Можно обновлять тексты, условия и логику в любой момент.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Это дорого?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Нет. Ассистент окупается за счёт роста конверсии и экономии на операционных затратах.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Возвращаете деньги, если не понравится?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Делаем демо и этапность. Возвраты — по условиям оферты, если проект не начат.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Заменит ли ассистент сотрудников?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Закрывает первичную обработку, FAQ и простые продажи. Менеджеры получают «тёплых» лидов.</p>
+          </details>
+          <details class="group rounded-2xl bg-white p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+            <summary class="cursor-pointer list-none font-medium flex items-center justify-between text-neutral-900">
+              Можно ли принимать оплату?
+              <span class="ml-4 rounded-md border border-gray-300 px-2 py-0.5 text-xs text-neutral-600 group-open:rotate-45 transition-all duration-300">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-neutral-600">Да, через подключаемые платёжные системы (ЮKassa, Tinkoff, Сбер и др.).</p>
+          </details>
+        </div>
+        
+        <!-- ============== CTA В СЕКЦИИ FAQ ============== -->
+        <div class="mt-12 text-center">
+          <div class="inline-block p-6 rounded-2xl bg-gradient-to-r from-slate-50 to-gray-100 border border-gray-200 shadow-lg">
+            <h3 class="text-xl font-semibold text-neutral-900 mb-3">❓ Остались вопросы?</h3>
+            <p class="text-neutral-600 mb-4">Наши эксперты готовы помочь 24/7</p>
+            <div class="flex gap-3 justify-center flex-wrap">
+              <a href="#contact" class="px-5 py-2 rounded-xl bg-gradient-to-r from-slate-500 to-gray-600 text-white font-semibold hover:shadow-lg transition-all duration-300">Задать вопрос</a>
+              <a href="#trial" class="px-5 py-2 rounded-xl ring-1 ring-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300">Попробовать бесплатно</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== КОНТЕНТНЫЙ ВЫВОД ============== -->
+    <section class="content-summary-section py-20 border-t border-neutral-200 bg-gradient-to-br from-indigo-50 to-purple-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="content-summary bg-white p-8 rounded-3xl shadow-xl border border-indigo-200 text-center">
+          <h2 class="text-3xl font-bold text-neutral-900 mb-6">📋 Краткий вывод</h2>
+          <p class="text-lg text-neutral-700 leading-relaxed mb-8 max-w-4xl mx-auto">
+            AI‑ассистент предоставляет полный функционал автоматизации продаж и поддержки клиентов, позволяя бизнесу работать 24/7 без потери качества обслуживания. Интеграция с популярными платформами и CRM-системами обеспечивает seamless-внедрение в существующие бизнес-процессы.
+          </p>
+          <div class="flex gap-4 justify-center flex-wrap">
+            <a href="https://ai.call-intellect.ru" target="_blank" class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">Протестировать бота</a>
+            <a href="#contact" class="px-6 py-3 rounded-xl ring-1 ring-indigo-300 text-indigo-700 hover:bg-indigo-50 transition-all duration-300">Получить консультацию</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="py-20 border-t border-neutral-200 bg-gradient-to-br from-amber-50 to-orange-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-neutral-900">Готовы увеличить прибыль с помощью AI?</h2>
+          <p class="mt-3 text-neutral-700 max-w-xl mx-auto">AI‑продавец начнёт обрабатывать заявки уже в первый день. Нажмите кнопку ниже — пришлём демо и расчёт внедрения.</p>
+          <div class="mt-8 grid grid-cols-2 gap-4 text-sm max-w-md mx-auto">
+                            <a href="https://ai.call-intellect.ru" target="_blank" class="rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold px-5 py-3 text-center shadow-lg hover:shadow-xl transition-all duration-300">Протестировать бота</a>
+            <a href="#audit" id="audit" class="rounded-xl ring-1 ring-orange-300 text-orange-700 hover:bg-orange-50 px-5 py-3 text-center transition-all duration-300">Бесплатный аудит</a>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-2 text-xs text-neutral-600 justify-center">
+            <span class="px-2 py-1 rounded-full bg-white/80 ring-1 ring-orange-200">ООО «Лаборатория умных ассистентов»</span>
+            <span class="px-2 py-1 rounded-full bg-white/80 ring-1 ring-orange-200">ИНН 5404314058</span>
+            <span class="px-2 py-1 rounded-full bg-white/80 ring-1 ring-orange-200">ОГРН 1225400042878</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="py-10 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-400">
+          <p>© 2025 AI‑Ассистент. Все права защищены.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" class="hover:text-white">Политика конфиденциальности</a>
+            <a href="#" class="hover:text-white">Договор‑оферта</a>
+            <a href="#contact" class="hover:text-white">Связаться</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== Floating CTA ===== -->
+    <a href="#trial" class="glow fixed bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-white text-neutral-900 font-semibold px-5 py-3 shadow-lg hover:opacity-90">
+      ⚡️ Закрывает заявки за 3 сек
+    </a>
+  </div>
+
+  <!-- Simple JavaScript for FAQ -->
+  <script>
+    document.querySelectorAll('details').forEach(detail => {
+      detail.addEventListener('click', (e) => {
+        if (e.target.tagName === 'SUMMARY') {
+          e.preventDefault();
+          detail.open = !detail.open;
+        }
+      });
+    });
+  </script>
+
+  <script>
+    (function(){
+      const targets = document.querySelectorAll('.rounded-2xl, section h2, .aspect-video, header .flex, .fixed.bottom-5.right-5');
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ e.target.classList.add('ros--in'); obs.unobserve(e.target); }
+        });
+      },{threshold:0.12});
+      targets.forEach(el=>{ el.classList.add('ros'); obs.observe(el); });
+    })();
+  </script>
+
+  <!-- Sticky Video Widget -->
+  <script src="js/sv-video-widget.js?v=29"
+    data-side="left"
+    data-vertical="bottom"
+    data-offset-x="20"
+    data-offset-y="20"
+    data-mini-width="132"
+    data-aspect="9:16"
+    data-src-mp4="IMG_3224.mp4"
+    data-src-webm=""
+    data-poster="assets/img/poster.jpg"
+    data-cta-text="Протестировать AI-ассистента"
+               data-cta-url="https://ai.call-intellect.ru"
+    data-hide-below="480"
+    data-autopause="true"
+    data-z-index="60"
+    data-hide-on='["/checkout","/success"]'
+    async></script>
+    
+  <!-- Debug Video Widget -->
+  <script>
+    console.log('🔍 Debug: Video widget loading...');
+    console.log('📁 Video path:', 'IMG_3224.mp4');
+    console.log('🖼️ Poster path:', 'assets/img/poster.jpg');
+    console.log('📱 Widget script:', 'js/sv-video-widget.js?v=29');
+  </script>
+</body>
+</html>
+с

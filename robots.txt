@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ai-agent-lia.ru/sitemap.xml
+
+# Разрешаем AI-ботам
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# (Если НЕ хотите обучения Gemini)
+User-agent: Google-Extended
+Disallow: /
