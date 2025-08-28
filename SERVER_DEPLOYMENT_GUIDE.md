@@ -109,7 +109,7 @@ OPENAI_API_KEY=sk-your-api-key-here
 PROJECT_NAME=AI-Ассистент
 PROJECT_DOMAIN=ai-agent-lia.ru
 MAIN_SITE_URL=https://ai.call-intellect.ru
-GENERATION_INTERVAL_MINUTES=5
+GENERATION_INTERVAL_MINUTES=60
 MAX_ARTICLES_PER_DAY=10
 SERVER_PORT=8081
 LOG_LEVEL=INFO
@@ -266,8 +266,8 @@ sudo journalctl -u ai-assistant -f
 # Открываем crontab
 crontab -e
 
-# Добавляем строку (каждые 5 минут):
-*/5 * * * * cd /root/ai-agent-lia && /root/ai-agent-lia/venv/bin/python3 auto_article_generator.py >> /root/ai-agent-lia/ai_generation_log.txt 2>&1
+# Добавляем строку (каждый час):
+0 * * * * cd /root/ai-agent-lia && /root/ai-agent-lia/venv/bin/python3 auto_article_generator.py >> /root/ai-agent-lia/ai_generation_log.txt 2>&1
 ```
 
 ---
@@ -383,7 +383,7 @@ ls -la *.html
 
 После выполнения всех шагов у вас будет:
 - **Рабочий сайт** на домене ai-agent-lia.ru
-- **Автоматическая генерация** статей каждые 5 минут
+- **Автоматическая генерация** статей каждый час
 - **1,700 готовых тем** для статей
 - **SEO оптимизация** и обновление sitemap
 - **Мониторинг** и управление через systemd

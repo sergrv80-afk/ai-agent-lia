@@ -129,8 +129,8 @@ systemctl enable $SERVICE_NAME
 # ШАГ 7: Настройка Cron
 echo "⏰ ШАГ 7: Настройка Cron..."
 
-# Добавляем задачу в crontab (каждые 5 минут)
-(crontab -l 2>/dev/null; echo "*/5 * * * * cd $PROJECT_DIR && $PROJECT_DIR/venv/bin/python3 auto_article_generator.py >> $PROJECT_DIR/ai_generation_log.txt 2>&1") | crontab -
+# Добавляем задачу в crontab (каждый час)
+(crontab -l 2>/dev/null; echo "0 * * * * cd $PROJECT_DIR && $PROJECT_DIR/venv/bin/python3 auto_article_generator.py >> $PROJECT_DIR/ai_generation_log.txt 2>&1") | crontab -
 
 # ШАГ 8: Создание папки для логов
 echo "📝 ШАГ 8: Создание папки для логов..."
@@ -171,7 +171,7 @@ echo ""
 echo "🌐 Ваш сайт доступен по адресу: http://$DOMAIN"
 echo "🤖 Сервис генерации статей: $SERVICE_NAME"
 echo "📝 Логи генерации: $PROJECT_DIR/ai_generation_log.txt"
-echo "⏰ Автогенерация: каждые 5 минут"
+echo "⏰ Автогенерация: каждый час"
 echo ""
 echo "🔧 Команды управления:"
 echo "   Статус: systemctl status $SERVICE_NAME"
